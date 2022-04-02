@@ -16,7 +16,7 @@
               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ url('store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('storeClient') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                   @if ($errors->any())

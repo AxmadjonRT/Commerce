@@ -18,18 +18,18 @@ class ClientsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function storeClient(Request $request)
     {
-        $data = $request->validate([
+        $dataC = $request->validate([
             'f_name' => 'bail|required|min:3',
             'l_name' => 'bail|required|min:3',
             'phone' => ['required', 'numeric', new PhoneNumber]
         ]);
 
         $clients = new Clients;
-        $clients->f_name = $data['f_name'];
-        $clients->l_name = $data['l_name'];
-        $clients->phone = $data['phone'];
+        $clients->f_name = $dataC['f_name'];
+        $clients->l_name = $dataC['l_name'];
+        $clients->phone = $dataC['phone'];
         $clients->save();
 
         return redirect('/');

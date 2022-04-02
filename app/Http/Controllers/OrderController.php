@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
-use App\Rules\PhoneNumber;
 use App\Models\Clients;
 use App\Models\OrderProducts;
 use App\Models\Orders;
@@ -21,14 +20,14 @@ class OrderController extends Controller
             'clients' => $clients
         ]);
     }
-    public function store(Request $request, Clients $id)
+    public function store(Request $request)
     {
-        $data = $request->validate([
+        $dataO = $request->validate([
             'client_id' => 'required',
             'products_ids' => 'required'
         ]);
 
-        $client = Clients::find($data['client_id']);
+        $client = Clients::find($dataO['client_id']);
         
         $order = new Orders();
         $order->name = $client->f_name;
@@ -36,7 +35,7 @@ class OrderController extends Controller
         $order->client_id = $client->id;
         $order->save();
 
-        foreach ($data['products_ids'] as $pr) {
+        foreach ($dataO['products_ids'] as $pr) {
             $product = Products::find($pr);
             $orderProduct = new OrderProducts();
             $orderProduct->order_id = $order->id;
