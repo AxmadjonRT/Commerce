@@ -51,7 +51,7 @@
           </select>
         </div>
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary mb-4">Save Client</button>
+        <button type="submit" class="btn btn-primary mb-4">Order</button>
       </form>
     </div>
     @include('clients')
