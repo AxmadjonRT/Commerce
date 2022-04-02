@@ -10,9 +10,15 @@ class Clients extends Model
     use HasFactory;
 
     protected $table = "clients";
+    
+    protected $fillable = [
+        'f_name',
+        'l_name',
+        'phone'
+    ];
 
-    public function products()
+    public function orders()
     {
-        return $this->hasMany(Products::class);
+        return $this->hasMany(Orders::class);
     }
 }

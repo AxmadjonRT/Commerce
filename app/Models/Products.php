@@ -11,8 +11,8 @@ class Products extends Model
 
     protected $table = "products";
 
-    public function clients()
+    public function orderProducts()
     {
-        return $this->belongsTo(Clients::class);
+        return $this->hasOne('App\Models\OrderProducts');
     }
 }
